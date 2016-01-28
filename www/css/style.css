@@ -1,0 +1,414 @@
+/* Empty. Add your own CSS if you like */
+@font-face {
+    font-family: BebasNeue; /* Имя шрифта */
+    src: url(../css/font/BebasNeueRegular.otf);
+      /* Путь к файлу со шрифтом */
+ }
+
+/*default*/
+body {
+	font-family: BebasNeue, arial;
+}
+h1,h2,h3,h5,h4,h6,a,p {
+	color: #fff;
+	text-decoration: none;
+	font-family: BebasNeue;
+}
+
+.text_grey {
+	color:#989797;
+}
+.text_uppercase {
+	text-transform: uppercase;
+}
+.text_red {
+	color: #d82b41;
+}
+.podpiska {
+	background-image: url(../img/heart.png);   
+    background-repeat: no-repeat; /*Убираем повтор изображения*/   
+    background-position: center center; /*Позиционируем*/  
+   	background-size: 50% 40%;     
+    width: 50px;
+    height: 50px; 
+}
+.podpiska_sezon {
+	background-image: url(../img/kolokol.png);   
+    background-repeat: no-repeat; /*Убираем повтор изображения*/   
+    background-position: center center; /*Позиционируем*/  
+   	background-size: 50% 40%;     
+    width: 50px;
+    height: 50px; 
+}
+.bar-header {
+	background: linear-gradient(to right, #1b1b1c, #261618); 
+	border-bottom-width: 0px;
+}
+
+/*fix default ionic*/
+.title {
+	margin: 0 !important; 
+	
+}
+.title img {
+	width: 100px;
+}
+
+/*main*/
+
+.bg_serch {
+	background-image: url(../img/cover.jpg);
+	background-position: center center;      
+	background-repeat: no-repeat;      
+	/*background-attachment: fixed;    */  
+	background-size: cover;      
+	background-color: #464646; 
+	color:#fff;
+	padding: 70px 5px;
+	height: 150px;
+
+}
+.bg_serch .icon_serch img {
+	width: 60px;
+}
+.bg_serch .form_search input {
+	/*width: 100%;
+	border-bottom: 2px solid rgb(189, 183, 183);
+	background-color: rgba(255, 255, 255, 0);
+	color: #fff;*/
+	/*font-size: 2rem;
+	height: 50px; 
+	position: absolute;
+	top: 25px;*/
+}
+.bg_serch .form_search button {
+	background-color: rgba(255, 255, 255, 0);
+	border: none;
+
+}
+.bg_serch .form_search button img{
+	width: 60px;
+}
+
+
+.nav {
+	padding: 0;
+	-webkit-box-shadow: 0px -20px 40px 39px #0D0D11;
+	-moz-box-shadow:    0px -20px 40px 39px #0D0D11;
+	box-shadow: 0px -20px 40px 39px #0D0D11;
+}
+.nav .col {
+	padding-right: 0;
+	padding-left: 0;
+	padding: 0;
+}
+.nav .col .button-bar .button {
+	border-style: none;
+	background-color: #0d0d11;
+	color:#fff;
+	/*padding-top: 10px;
+	padding-bottom: 10px;*/
+	text-transform: uppercase;
+	font-size: 12px;
+	border-radius: 0;
+	
+}
+.nav .col .button-bar .activ {
+	border-bottom: 2px solid rgb(255, 255, 255);
+	text-shadow: 0px 0px 40px rgb(0, 0, 0), 0px 0px 1em rgb(255, 255, 255);
+
+
+}
+.pop_1 {
+	background-position: center center;      
+	background-repeat: no-repeat;      
+	/*background-attachment: fixed;    */  
+	background-size: cover;      
+	background-color: #464646; 
+	color:#fff;
+}
+.pop_1 {
+	text-transform: uppercase;
+}
+.pop_1 .s_titel h5 {
+	
+	padding-top: 25px;
+	color: #9d9596;
+}
+.pop_1 .s_titel h1 {
+	margin-top: 0px;
+}
+
+
+.bar.bar-stable {
+	background-color: #141416;
+	border: none;
+}
+/*Настройка туглов*/
+.toggle {
+	z-index: 2;
+}
+
+.toggle-positive .track {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+.toggle.toggle-positive input:checked + .track {
+	background-color: rgba(56, 126, 245, 0.3);
+
+}
+.toggle-assertive .track {
+	max-width: 200px;
+	width: 170px;
+	height: 70px;
+	border-radius: 50px;
+}
+.toggle-assertive .handle {
+	width: 50%;
+	height: 70px;
+	border-radius: 50px;
+	top: 5px;
+	left: 4px;
+}
+.toggle-assertive .track{
+	border-color: #fb253e;
+    background-color: rgba(78, 52, 50, 0);
+}
+
+.toggle-assertive .handle{
+	background-color: #fb253e;
+}
+
+.toggle-assertive input:checked + .track .handle {
+	transform: translate3d(100%, 0px, 0px);
+	background-color: #fb253e;
+}
+.toggle.toggle-assertive input:checked + .track {
+    border-color: #fb253e;
+    background-color: rgba(78, 52, 50, 0);
+}
+
+
+.info h5{
+	font-size: 12px;
+	padding-top: 25px;
+	color: #9d9596;
+}
+.info h4 {
+	font-size: 16px;
+}
+
+.my_chek {
+	position: relative;
+	top: -53px;
+}
+
+.sezon {
+	position: relative;
+	top: -50px;
+	left: -20px;
+}
+.seria {
+	position: relative;
+	top: -50px;
+	right: -20px;
+}
+.date h5 {
+	color:#999999;
+}
+.date h1 {
+	color:#fb243d;
+	font-size: 70px;
+}
+.load_more {
+	background-color: #464646;
+	border-top:1px solid #9D9596;
+	height: 50px;
+}
+.load_more p{
+	color:#fff;
+	text-transform: uppercase;
+}
+.load_more_a {
+	text-decoration:none;
+}
+.btn_auth {
+	border:none;
+	border-radius: 2px;
+	background-color: #BDBDBD;
+	padding: 15px;
+	margin-left: 3px;
+	margin-bottom: 2px;
+	text-align: center;
+}
+.sub_class {
+	background-color: #0D0D11;
+	height: 70vh;
+	padding-top: 50px;
+}
+.sub_class input {
+	margin: 10px auto;
+	width: 70%;
+	background-color: rgba(255,255,255,0);
+	border-bottom: 2px solid #fff;
+	color: #fff;
+}
+.sub_class button {
+	background-color: rgba(255,255,255,0);
+	margin-top: 10px;
+	width: 70%;
+	margin: 30px auto;
+	color: #fff;
+	border-top: none;
+	border-bottom: 2px solid #fff;  
+	border-left: none;
+	border-right: none; 
+	text-transform: uppercase;
+
+}
+.sub_class h3 {
+	color: #fff;
+	margin-bottom: 10px;
+}
+
+
+
+/*Поиск*/
+.search {
+	background-color: #151518;
+	color: #fff;
+}
+
+.search img {
+	max-width: 120px;
+}
+.search .toggle-positive .track .like{
+	background-image: url(../img/heart.png);   
+    background-repeat: no-repeat; /*Убираем повтор изображения*/   
+    background-position: center center; /*Позиционируем*/   
+}
+.search .list {
+	border-bottom: 2px solid #d82b41 !important;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.search .item-input {
+	border: none;
+	background-color: #151518;
+
+}
+.search .item-input input{
+	color: #fff;
+}
+.search .card .item {
+	background-color: #151518;
+	padding-left: 5px;
+	border-width: 0px;
+}
+.search .card {
+	margin: 0;
+	border-bottom: 1px solid #383338;
+}
+.search .left_ {
+	padding-left: 10px; 
+}
+.search .podpiska {
+	width: 50px;
+	height: 50px;
+}
+.search .podpiska_sezon {
+	width: 50px;
+	height: 50px;
+}
+.search h5 span {
+	color: #d82b41;
+}
+
+
+
+/*serial*/
+.serial {
+	background-color: #151518;
+	color: #fff;
+}
+.serial h6 {
+	font-size: 11px;
+}
+.serial h5 {
+	margin: 0;
+	padding-top: 10px;
+}
+.serial h2 {
+	margin: 0;
+	padding-top: 5px;
+}
+.serial .h6_ {
+	margin-left: 10px;
+}
+.serial .bgc_serial {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #464646;
+	color: #FFF; 
+}
+.serial .toggle-positive .podpiska_sezon{
+	background-image: url(../img/kolokol.png);   
+    background-repeat: no-repeat; /*Убираем повтор изображения*/   
+    background-position: center center; /*Позиционируем*/  
+    background-size: 70% 60%;  
+    width: 50px;
+    height: 50px;  
+    
+}
+.serial .toggle-positive .podpiska {
+	background-image: url(../img/heart.png);   
+    background-repeat: no-repeat; /*Убираем повтор изображения*/   
+    background-position: center center; /*Позиционируем*/  
+   	background-size: 70% 60%;     
+    width: 90px;
+	height: 90px; 
+}
+.serial slick {
+	z-index: 10;
+}
+.serial slick h2{
+	color:#fff;
+}
+.serial	.active_slide h2{
+	color:#fff;
+	width: 50px;
+	margin: 0px auto;
+	height: 50px;
+	background-color: rgb(217, 41, 63);
+	border-radius: 50%;
+}
+.serial	.wrapp_like {
+	padding-top: 30px;
+}
+.serial .red_round {
+	width: 70px;
+	height: 70px;
+	background-color: #D82B41;
+	position: relative;
+	margin: 0px auto;
+	top: -50px;
+	z-index: 1;
+	border-radius: 50%;
+}
+.serial .red_line {
+	width: 50px;
+	height: 2px;
+	background-color: #D82B41;
+	z-index: 1;
+	position: relative;
+}
+.serial .wrapp_shadow {
+	-webkit-box-shadow: 0px -20px 50px 30px #0D0D11;
+	-moz-box-shadow:    0px -20px 50px 30px #0D0D11;
+	box-shadow: 0px -20px 50px 30px #0D0D11;
+	background-color: #0D0D11;
+	margin-top: 30px;
+}

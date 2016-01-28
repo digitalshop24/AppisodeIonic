@@ -1,0 +1,176 @@
+<!--header-->
+<ion-header-bar>
+    <h1 class="title">
+      <img src="img/logo_appisode.png" alt="" class="img-responsive">
+    </h1>
+    
+</ion-header-bar>
+
+<ion-view view-title="pop" ng-init="initData();">
+  <ion-content>
+    <!-- Поиск --> 
+            <div class="text-center bg_serch">
+              <a class="icon_serch" href="#/app/search"> 
+                <img src="img/search.png" alt="" class="img-responsive">
+              </a>
+            </div>
+         <!-- Навигация --> 
+          <div class="row nav">
+            <div class="col">
+                <div class="button-bar">
+                  <!-- <a class="button" href="">Новые</a> -->
+                  <a class="button" ng-click="visiEffect('new');">Новые</a>
+                  <a class="button icon-left ion-star activ" ng-click="visiEffect('pop'); initData();">Популярные</a>
+                  <a class="button" ng-click="visiEffect('sub');">Ожидаемые</a>
+                </div>
+            </div>
+          </div>
+          <!-- вижен популярных -->
+         <section ng-show = "visible.pop" >
+          <div 
+            ng-repeat="one_serial in serials | limitTo:col" 
+            class="pop_1" 
+            style="background-image: url({{'http://image.tmdb.org/t/p/w500'+one_serial.poster}});"
+            >
+          <div style="background-color: rgba(0, 0, 0, 0.7); ">
+            <div class="row">
+              <div class="col text-center s_titel">
+                  <h5 class="">{{one_serial.name }}</h5>
+                  <h1>{{one_serial.russian_name}}  </h1>
+              </div>
+            </div>
+            <!-- чекбоксы -->
+            <div class="row">
+              
+              <div class="col text-center">
+                  <label class="toggle toggle-positive">
+                   <input type="checkbox">
+                    <div class="track podpiska">
+                    </div>
+                </label>
+              </div>
+              
+              <div class="col col-50 text-center">
+                <label class="toggle toggle-assertive">
+                  <input type="checkbox">
+                  <div class="track">
+                   <div class="handle"></div>
+                  </div>
+                  <span class="sezon">Сезон</span>
+                  <span class="seria">Серия</span>
+                </label>
+                          
+              </div>
+              <div class="col text-center">
+                  <label class="toggle toggle-positive">
+                   <input type="checkbox">
+                    <div class="track podpiska_sezon">
+                    </div>
+                </label>
+              </div>
+            </div>
+            <!--end чекбоксы -->
+            <!-- инфа -->
+            <div class="row info">
+              <div class="col text-center">
+                  <h5>дата выхода сезона</h5>
+                  <h4>{{one_serial.season_date}}</h4>
+              </div>
+            </div>
+            <div class="row date">
+              <div class="col text-right">
+                <h5>м</h5>
+                <h1>00</h1>
+              </div>
+              <div class="col text-center">
+                <h5>д</h5>
+                <h1>24</h1>
+              </div>
+              <div class="col text-left">
+                <h5>ч</h5>
+                <h1>01</h1>
+              </div>
+            </div>
+          </div> 
+          </div>
+        </section> 
+    <!--end вижен популярных -->
+        <section ng-show="visible.new">
+          <div 
+            ng-repeat="one_serial in serials | limitTo:col | orderBy:'-name'" 
+            class="pop_1" 
+            style="background-image: url({{'http://image.tmdb.org/t/p/w500'+one_serial.poster}});"
+            >
+          <div style="background-color: rgba(0, 0, 0, 0.7); ">
+            <!-- style="background-image: url({{'http://image.tmdb.org/t/p/w500'+one_serial.poster}});" -->
+            <div class="row">
+              <div class="col text-center s_titel">
+                  <h5 class="">{{one_serial.name }}</h5>
+                  <h1>{{one_serial.russian_name}}  </h1>
+              </div>
+            </div>
+            <!-- чекбоксы -->
+            <div class="row">
+              
+              <div class="col text-center">
+                  <label class="toggle toggle-positive">
+                   <input type="checkbox">
+                    <div class="track podpiska">
+                    </div>
+                </label>
+              </div>
+              
+              <div class="col col-50 text-center">
+                <label class="toggle toggle-assertive">
+                  <input type="checkbox">
+                  <div class="track">
+                   <div class="handle"></div>
+                  </div>
+                  <span class="sezon">Сезон</span>
+                  <span class="seria">Серия</span>
+                </label>
+                          
+              </div>
+              <div class="col text-center">
+                  <label class="toggle toggle-positive">
+                   <input type="checkbox">
+                    <div class="track podpiska_sezon">
+                    </div>
+                </label>
+              </div>
+            </div>
+            <!--end чекбоксы -->
+            <!-- инфа -->
+            <div class="row info">
+              <div class="col text-center">
+                  <h5>дата выхода сезона</h5>
+                  <h4>{{one_serial.season_date}}</h4>
+              </div>
+            </div>
+           </div> 
+          </div>
+          <a href="" ng-click="col = col + 5" class="load_more_a">
+          <div class="col text-center load_more">
+              <p>Показать больше</p>
+          </div>
+          </a>
+        </section>
+        <section ng-show="visible.sub" class="sub_class">
+           <div class="">
+              <h4 class="text-center ">Введите телефон или E-mail для авторизации</h2>
+              <input type="password" class="col" ng-model="data.pass">
+              <button class=" col" ng-click="authentication(data.pass)">Отправить</button> 
+           </div>
+           <div class="">
+              <h4 class="text-center ">Введите код (e-mail/телефон)</h4>
+              <input type="password" class="col" ng-model="data.pass">
+              <button class=" col" ng-click="authentication(data.pass)">Подтвердить</button> 
+           </div>
+           <div>
+              <h4>Ваши подписки:</h4>
+
+           </div>
+        </section>
+  </ion-content>
+</ion-view>
+   
