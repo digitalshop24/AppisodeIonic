@@ -6,7 +6,7 @@
     
 </ion-header-bar>
 
-<ion-view view-title="pop" ng-init="initData();">
+<ion-view view-title="pop" ng-init="initData(); check_auth();">
   <ion-content>
     <!-- Поиск --> 
             <div class="text-center bg_serch">
@@ -21,7 +21,7 @@
                   <!-- <a class="button" href="">Новые</a> -->
                   <a class="button" ng-click="visiEffect('new');">Новые</a>
                   <a class="button icon-left ion-star activ" ng-click="visiEffect('pop'); initData();">Популярные</a>
-                  <a class="button" ng-click="visiEffect('sub');">Ожидаемые</a>
+                  <a class="button" ng-click="visiEffect('sub'); subscription(); ">Ожидаемые</a> <!--  -->
                 </div>
             </div>
           </div>
@@ -156,17 +156,17 @@
           </a>
         </section>
         <section ng-show="visible.sub" class="sub_class">
-           <div class="">
-              <h4 class="text-center ">Введите телефон или E-mail для авторизации</h2>
-              <input type="password" class="col" ng-model="data.pass">
-              <button class=" col" ng-click="authentication(data.pass)">Отправить</button> 
+           <div class="" ng-show="visible.subscription_form1">
+              <h4 class="text-center ">Введите телефон для авторизации</h2>
+              <input type="text" class="col" ng-model="tel">
+              <button class=" col" ng-click="register_form2(tel);">Отправить</button> 
            </div>
-           <div class="">
-              <h4 class="text-center ">Введите код (e-mail/телефон)</h4>
-              <input type="password" class="col" ng-model="data.pass">
-              <button class=" col" ng-click="authentication(data.pass)">Подтвердить</button> 
+           <div class="" ng-show="visible.subscription_form2">
+              <h4 class="text-center">Введите код</h4>
+              <input type="text" class="col" ng-model="auth">
+              <button class=" col" ng-click="">Подтвердить</button> 
            </div>
-           <div>
+           <div ng-show="visible.subscription_">
               <h4>Ваши подписки:</h4>
 
            </div>

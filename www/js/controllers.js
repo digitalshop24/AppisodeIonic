@@ -45,10 +45,6 @@ angular.module('starter.controllers', [])
 
 })
 
-
-
-
-
 .controller('PopCtrl', function($scope, $stateParams, $location, $http, $ionicPopup, $timeout, $rootScope) {
     //Начальные данные
     $scope.visible = [];
@@ -57,6 +53,10 @@ angular.module('starter.controllers', [])
     $scope.visible.pop = true;
     $scope.visible.sub = false;
     console.log('$scope.visible',$scope.visible);
+    // localStorage['foo'] = 'bar';
+    // var foo = localStorage['foo'];
+    // console.log(foo);
+
     //получение первых 10 сериалов
     
     // var url ='http://appisode.ru/api/v1/shows?page=1&per_page=10';
@@ -84,6 +84,11 @@ angular.module('starter.controllers', [])
       $scope.visible.sub = false;
       $scope.visible.new = false;
       $scope.visible.search = false;
+      // страница подписок
+      $scope.visible.subscription_ = false;
+      $scope.visible.subscription_form1 = false;
+      $scope.visible.subscription_form2 = false;
+
 
     switch(click_obj) {
       case 'pop':  
@@ -137,7 +142,85 @@ angular.module('starter.controllers', [])
       }
     });
   }
+
+  $scope.check_auth = function() {
+    var auth = [];
+    auth.tel = localStorage['tel'];
+    auth.key_auth = localStorage['key_auth'];
+    console.log('auth' , auth);
+    
+    var url = 'http://appisode.ru/api/v1/users/check_auth'
+    $http.post(url,auth).success(function(data, status, headers, config){
+      $scope.auth_prov = data;
+      if ($scope.auth_prov == true) localStorage['auth'] = true;
+      else localStorage['auth'] = false;
+    });
+  }
+
+  $scope.subscription = function() {
+    var auth = localStorage['auth'];
+    if (auth == true) $scope.show_sub();
+    else $scope.register_form1();
+  }
+  $scope.register_form1 = function() {
+    $scope.visible.subscription_ = false;
+    $scope.visible.subscription_form1 = true;
+    $scope.visible.subscription_form2 = false;
+  }
+  $scope.register_form2 = function(phone) {
+    console.log('phone', phone);
+    localStorage['phone'] = phone;
+    $scope.visible.subscription_ = false;
+    $scope.visible.subscription_form1 = false;
+    $scope.visible.subscription_form2 = true;
+    var auth = [];
+    auth.phone = phone;
+    console.log('auth',auth);
+    var url = 'http://appisode.ru/api/v1/users/register';
+    $http.post(url,auth).success(function(data, status, headers, config){
+      console.log('data', data);
+      console.log('status', status);
+      console.log('headers', headers);
+      console.log('config', config);
+      $scope.auth_prov = data; //код для авторизации
+      console.log('$scope.auth_prov', scope.auth_prov);
+      localStorage['auth_prov'] = data;
+    }).  
+    error(function(data, status, headers, config) {
+      console.log('data', data);
+      console.log('status', status);
+      console.log('headers', headers);
+      console.log('config', config);
+    });
+  }
+
+  $scope.register = function(auth_user) {
+    console.log('auth_user', auth_user);
+    auth_prov = localStorage['auth_prov'];
+    if (auth_user == auth_prov) {
+      var url = 'http://appisode.ru/api/v1/users/check_confirmation';
+      var auth = [];
+      auth.phone = localStorage['phone'];
+      auth.confirmation = auth_user;
+      $http.post(url,auth).success(function(data, status, headers, config){
+        $scope.show_sub();
+        localStorage['auth'] = true;
+      });
+    }
+    else $scope.register_form1();
+  }
+
+  $scope.show_sub = function() {
+    $scope.visible.subscription_ = true;
+    $scope.visible.subscription_form1 = false;
+    $scope.visible.subscription_form2 = false;
+    $http.get(url).success(function(data, status, headers, config){
+      $scope.subscription = data;
+      console.log('subscription', $scope.subscription);
+    });
+  }
 })
+
 .controller('SearchCtrl', function($scope, $stateParams) {
 })
 
