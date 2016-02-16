@@ -11,35 +11,42 @@
 	<form ng-submit="searchData(SearchSerial)">
 	  <div class="list">
 		<label class="item item-input">
-		  <input type="search" placeholder="Search" ng-model = "SearchSerial" class="text_uppercase">
-		  <!-- <button class="button  button-positive" type="submit">Найти</button> -->
+		  <input type="search" placeholder="Search" ng-model = "SearchSerial" class="text_uppercase" >
+		  <button class="button  button-positive" type="submit">Найти</button>
+
 		</label>
 	  </div>
 	</form>
-	<h5 class="left_ text_grey text_uppercase">Найден 1 сериал</h5>
-	<div class="card">
+	
+
+	<h5 class="left_ text_grey text_uppercase">Найден {{ search.length }} сериал</h5>
+	<div class="card" ng-repeat="s in search">
 	  <div class="item item-text-wrap">
 		<div class="row">
 			<div class="col col-40"> 
-				<img src="img/ser1.jpg" alt="" class="img-responsive">
+				<img src="{{s.poster}}" alt="" class="img-responsive">
 			</div>
 			<div class="col col-60">
-				<h2 class="text_uppercase"><a href="#/app/serial">Карточный домик</a></h2>
-				<h5 class="text_grey text_uppercase">House of cards</h5>
+				<h2 class="text_uppercase"><a href="#/app/serial/{{s.id}}">{{s.russian_name}}</a></h2>
+				<h5 class="text_grey text_uppercase">{{s.name}}</h5>
 				<div class="row">
 					<div class="col text-center">
-						<label class="toggle toggle-positive">
+						<label class="toggle toggle-positive" ng-click="subscription_new_episodes(s.id,'non','new_episodes')">
 							<input type="checkbox">
 							<div class="track podpiska">
 							</div>
 						</label>
+						
 					</div>
 					
 					
 					<div class="col text-center">
+
 						<label class="toggle toggle-positive">
+						<a href="#/app/serial/{{s.id}}">
 							<input type="checkbox">
 							<div class="track podpiska_sezon"></div>
+						</a>
 						</label>
 					</div>
 					
@@ -52,7 +59,7 @@
 	  </div>
 	</div>
 
-	<h5 class="left_ text_grey text_uppercase">Похожие из названия</h5>
+	<!-- <h5 class="left_ text_grey text_uppercase">Похожие из названия</h5>
 	<div class="card">
 	  <div class="item item-text-wrap">
 		<div class="row">
@@ -86,68 +93,6 @@
 			</div>
 		</div>
 	  </div>
-	  <div class="item item-text-wrap">
-		<div class="row">
-			<div class="col col-40"> 
-				<img src="img/ser1.jpg" alt="" class="img-responsive">
-			</div>
-			<div class="col col-60">
-				<h2 class="text_uppercase"><a href="#/app/serial">Карточный домик</a></h2>
-				<h5 class="text_grey text_uppercase">House of cards</h5>
-				<div class="row">
-					<div class="col text-center">
-						<label class="toggle toggle-positive">
-							<input type="checkbox">
-							<div class="track podpiska">
-							</div>
-						</label>
-					</div>
-					
-					
-					<div class="col text-center">
-						<label class="toggle toggle-positive">
-							<input type="checkbox">
-							<div class="track podpiska_sezon"></div>
-						</label>
-					</div>
-					
-					<div class="col">
-						<h5 class="text_grey text_uppercase"> Идет<br> <span>3</span> сезон</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-	  </div>
-	  <div class="item item-text-wrap">
-		<div class="row">
-			<div class="col col-40"> 
-				<img src="img/ser1.jpg" alt="" class="img-responsive">
-			</div>
-			<div class="col col-60">
-				<h2 class="text_uppercase"><a href="#/app/serial">Карточный домик</a></h2>
-				<h5 class="text_grey text_uppercase">House of cards</h5>
-				<div class="row">
-					<div class="col text-center">
-						<label class="toggle toggle-positive">
-							<input type="checkbox">
-							<div class="track podpiska">
-							</div>
-						</label>
-					</div>
-					<div class="col text-center">
-						<label class="toggle toggle-positive">
-							<input type="checkbox">
-							<div class="track podpiska_sezon"></div>
-						</label>
-					</div>
-					
-					<div class="col">
-						<h5 class="text_grey text_uppercase"> Идет<br> <span>3</span> сезон</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-	  </div>
-	</div>
+	</div> -->
   </ion-content>
 </ion-modal-view>

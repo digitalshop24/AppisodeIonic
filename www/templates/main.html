@@ -19,9 +19,9 @@
             <div class="col">
                 <div class="button-bar">
                   <!-- <a class="button" href="">Новые</a> -->
-                  <a class="button" ng-click="visiEffect('new');">Новые</a>
-                  <a class="button icon-left ion-star activ" ng-click="visiEffect('pop'); initData();">Популярные</a>
-                  <a class="button" ng-click="visiEffect('sub'); subscription(); ">Ожидаемые</a> <!--  -->
+                  <a class="button {{star.new}}" ng-click="visiEffect('new');">Новые</a>
+                  <a class="button {{star.pop}}" ng-click="visiEffect('pop'); initData();">Популярные</a>
+                  <a class="button {{star.sub}}" ng-click="visiEffect('sub'); subs(); ">Ожидаемые</a> <!--  -->
                 </div>
             </div>
           </div>
@@ -35,38 +35,41 @@
           <div style="background-color: rgba(0, 0, 0, 0.7); ">
             <div class="row">
               <div class="col text-center s_titel">
-                  <h5 class="">{{one_serial.name }}</h5>
-                  <h1>{{one_serial.russian_name}}  </h1>
+                  <a href="#/app/serial/{{one_serial.id}}"><h5 class="">{{one_serial.name }}</h5></a>
+                  <a href="#/app/serial/{{one_serial.id}}"><h1>{{one_serial.russian_name}}  </h1></a>
               </div>
             </div>
             <!-- чекбоксы -->
             <div class="row">
               
               <div class="col text-center">
-                  <label class="toggle toggle-positive">
+                  <label class="toggle toggle-positive" ng-click="subscription_new_episodes(one_serial.id,'non', 'new_episodes')"> 
                    <input type="checkbox">
                     <div class="track podpiska">
                     </div>
                 </label>
               </div>
               
-              <div class="col col-50 text-center">
-                <label class="toggle toggle-assertive">
-                  <input type="checkbox">
-                  <div class="track">
-                   <div class="handle"></div>
-                  </div>
+             
+              <div class="col col-50 text-center" ng-init = "toggle_one = false">
+                  <label class="toggle test1" 
+                  ng-click="toggle_one = !toggle_one; toggle_full_mana(one_serial.id, toggle_one)" >
+                     <input type="checkbox">
+                     <div class="track test1">
+                       <div class="handle"></div>
+                     </div>
+                  </label>
                   <span class="sezon">Сезон</span>
-                  <span class="seria">Серия</span>
-                </label>
-                          
+                  <span class="seria">Серия</span>     
               </div>
+                          
+            
               <div class="col text-center">
-                  <label class="toggle toggle-positive">
+                 <a href="#/app/serial/{{one_serial.id}}"> <label class="toggle toggle-positive">
                    <input type="checkbox">
                     <div class="track podpiska_sezon">
                     </div>
-                </label>
+                </label></a>
               </div>
             </div>
             <!--end чекбоксы -->
@@ -110,10 +113,10 @@
               </div>
             </div>
             <!-- чекбоксы -->
-            <div class="row">
+          <div class="row">
               
               <div class="col text-center">
-                  <label class="toggle toggle-positive">
+                  <label class="toggle toggle-positive" ng-click="subscription_new_episodes(one_serial.id,'non','new_episodes')">
                    <input type="checkbox">
                     <div class="track podpiska">
                     </div>
@@ -121,22 +124,21 @@
               </div>
               
               <div class="col col-50 text-center">
-                <label class="toggle toggle-assertive">
-                  <input type="checkbox">
-                  <div class="track">
-                   <div class="handle"></div>
-                  </div>
+                  <label class="toggle test1" ng-click="toggle_full_mana()" >
+                     <input type="checkbox">
+                     <div class="track test1">
+                       <div class="handle"></div>
+                     </div>
+                  </label>
                   <span class="sezon">Сезон</span>
-                  <span class="seria">Серия</span>
-                </label>
-                          
+                  <span class="seria">Серия</span>     
               </div>
               <div class="col text-center">
-                  <label class="toggle toggle-positive">
+                 <a href="#/app/serial/{{one_serial.id}}"> <label class="toggle toggle-positive">
                    <input type="checkbox">
                     <div class="track podpiska_sezon">
                     </div>
-                </label>
+                </label></a>
               </div>
             </div>
             <!--end чекбоксы -->
@@ -164,11 +166,14 @@
            <div class="" ng-show="visible.subscription_form2">
               <h4 class="text-center">Введите код</h4>
               <input type="text" class="col" ng-model="auth">
-              <button class=" col" ng-click="">Подтвердить</button> 
+              <button class="col" ng-click="register(auth)">Подтвердить</button> 
            </div>
            <div ng-show="visible.subscription_">
-              <h4>Ваши подписки:</h4>
-
+              <h4 class="col">Ваши подписки:</h4>
+              <div class="row" ng-repeat="sub in subscription">
+                  <h5 class="col col-75">{{$index+1}}. {{sub.name}}</h5>
+                  <a ng-click="un_subscription_new_episodes(sub.id);" class="col col-25">Отписаться</a>
+              </div>
            </div>
         </section>
   </ion-content>

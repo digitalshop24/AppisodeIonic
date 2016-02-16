@@ -24,7 +24,6 @@ angular.module('starter', ['ionic', 'starter.controllers','slick'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
     .state('app', {
     url: '/app',
     abstract: true,
@@ -55,7 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers','slick'])
     })
 
     .state('app.serial', {
-      url: '/serial',
+      url: '/serial/:id',
       views: {
         'menuContent': {
           templateUrl: 'templates/serial.html',
