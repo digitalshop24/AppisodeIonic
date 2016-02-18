@@ -271,9 +271,41 @@ h1,h2,h3,h5,h4,h6,a,p {
 .sub_class h3 {
 	color: #fff;
 	margin-bottom: 10px;
+	
+}
+.sub_serial {
+	padding: 0;
+}
+.sub_serial h5 {
+	color: #fff;
+	position: relative;
+	z-index: 2;
+}
+.sub_serial a {
+	color: #fff;
+	margin-bottom: 10px;
+	position: relative;
+	z-index: 2;
+
 }
 
 
+.sub_class .sub_serial {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #464646;
+	color: #fff;
+	height: 100px;
+}
+.sub_serial_bg {
+	background-color: rgba(0, 0, 0, 0.33);
+	width: 100%;
+	position: absolute;
+	height: 100px;
+	z-index: 1;
+}
 
 /*Поиск*/
 .search {

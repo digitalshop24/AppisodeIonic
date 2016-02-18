@@ -114,7 +114,10 @@ angular.module('starter.controllers', [])
       // }
     });
   }
-
+  $rootScope.log_out = function() {
+    localStorage['key_auth'] = undefined;
+    localStorage['phone'] = undefined;
+  }
   $rootScope.check_auth = function() {
     // localStorage['key_auth'] = undefined;
     // localStorage['phone'] = undefined;
@@ -129,7 +132,7 @@ angular.module('starter.controllers', [])
   $rootScope.subs = function() {
     $scope.key = localStorage['key_auth'];
     $scope.phone = localStorage['phone'];
-    if (($scope.key == undefined)||($scope.key == 'undefined')||($scope.phone == undefined)||($scope.phone == 'undefined')) {$rootScope.showPopup_auth();}
+    if ((($scope.key == undefined)||($scope.key == 'undefined'))&&(($scope.phone == undefined)||($scope.phone == 'undefined'))) {$rootScope.showPopup_auth();}
     else {
     if (($scope.key.length != 0)&&($scope.phone.length != 0)) { $rootScope.show_sub();}
     else { $rootScope.showPopup_auth(); }
@@ -210,7 +213,7 @@ angular.module('starter.controllers', [])
     }
     else var url = 'http://appisode.ru/api/v1/subscriptions/subscribe?phone='+phone+'&key='+key+'&show_id='+id+'&episode_id='+id_ser+'&subtype='+subtype;
    
-    if ((key == undefined)||(key == 'undefined')||(phone == undefined)||(phone == 'undefined')) { $rootScope.showPopup_auth(id,id_ser,subtype);  }
+    if (((key == undefined)||(key == 'undefined'))&&((phone == undefined)||(phone == 'undefined'))) { $rootScope.showPopup_auth(id,id_ser,subtype);  }
     else 
     if ((key.length != 0)&&(phone.length != 0))
     {   console.log('url', url);
@@ -266,14 +269,19 @@ $rootScope.showPopup_auth = function(id, id_ser, subtype) {
             e.preventDefault();
           } else {
             localStorage['phone'] = $rootScope.data.tel;
-            if (id_ser == 'non') {
-                var url = 'http://appisode.ru/api/v1/subscriptions/subscribe?phone='+phone+'&key='+key+'&show_id='+id+'&subtype='+subtype;
+            if(id == undefined) {
+              var url = 'http://appisode.ru/api/v1/users/register?phone='+$rootScope.data.tel;
             }
-            else var url = 'http://appisode.ru/api/v1/subscriptions/subscribe?phone='+phone+'&key='+key+'&show_id='+id+'&episode_id'+id_ser+'&subtype='+subtype;
+            else
+            if ((id_ser == 'non')||(id_ser == undefined)) {
+                var url = 'http://appisode.ru/api/v1/users/register?phone='+$rootScope.data.tel+'&show_id='+id+'&subtype='+subtype;
+            }
+            else var url = 'http://appisode.ru/api/v1/users/register?phone='+$rootScope.data.tel+'&show_id='+id+'&episode_id='+id_ser+'&subtype='+subtype;
             console.log(url);
             $http.get(url).success(function(data, status, headers, config){
             })
             $scope.showPopup_auth_success();
+            e.preventDefault();
           }
         }
       }
@@ -307,6 +315,7 @@ $rootScope.showPopup_auth_success = function() {
                   $rootScope.show_sub();
                 }
                 else $rootScope.subs();
+                e.preventDefault();
               });
             }
         }

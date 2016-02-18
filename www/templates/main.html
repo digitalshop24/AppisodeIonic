@@ -76,8 +76,8 @@
             <!-- инфа -->
             <div class="row info">
               <div class="col text-center">
-                  <h5>дата выхода сезона</h5>
-                  <h4>{{one_serial.season_date}}</h4>
+                  <h5>дата выхода серии</h5>
+                  <h4>{{one_serial.next_episode.air_date}}</h4>
               </div>
             </div>
             <div class="row date">
@@ -145,8 +145,8 @@
             <!-- инфа -->
             <div class="row info">
               <div class="col text-center">
-                  <h5>дата выхода сезона</h5>
-                  <h4>{{one_serial.season_date}}</h4>
+                  <h5>дата выхода серии</h5>
+                  <h4>{{one_serial.next_episode.air_date}}</h4>
               </div>
             </div>
            </div> 
@@ -170,10 +170,18 @@
            </div>
            <div ng-show="visible.subscription_">
               <h4 class="col">Ваши подписки:</h4>
-              <div class="row" ng-repeat="sub in subscription">
+              <div class="row sub_serial" 
+              ng-repeat="sub in subscription"  
+              style="background-image: url({{'http://image.tmdb.org/t/p/w500'+sub.poster}})";>
+                <div class="sub_serial_bg">  
+                </div>  
                   <h5 class="col col-75">{{$index+1}}. {{sub.name}}</h5>
                   <a ng-click="un_subscription_new_episodes(sub.id);" class="col col-25">Отписаться</a>
+                 
               </div>
+           </div>
+           <div class="col">
+             <button ng-click="log_out()">LogOut</button>
            </div>
         </section>
   </ion-content>
